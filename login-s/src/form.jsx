@@ -15,7 +15,14 @@ export default function Form() {
   }
   function handleSubmit(event) {
     event.preventDefault();
-    localStorage.setItem("user", JSON.stringify(data));
+    const databaseUsers = JSON.parse(localStorage.getItem("users")) || [];
+    const verificaUtente = databaseUsers.some((x) => x.email === data.email);
+    if (verificaUtente) {
+      alert("email già registrata");
+      return;
+    }
+    const updateUsers = [...databaseUsers, data];
+    localStorage.setItem("users", JSON.stringify(updateUsers));
     alert("registrazione effetuata con successo");
     setData({
       nome: "",
