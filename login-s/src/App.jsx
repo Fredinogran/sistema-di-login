@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import "./App.css";
 import Form from "./form";
 import Login from "./login";
+import Dashboard from "./Dashboard";
 
 function App() {
   const [isLogged, setIsLogged] = useState(false);
@@ -13,10 +14,15 @@ function App() {
       setIsLogged(false);
     }
   }, []);
+
   return (
     <>
       <Form></Form>
-      {isLogged ? <p>utente loggato</p> : <Login />}
+      {isLogged ? (
+        <Dashboard setIsLogged={setIsLogged} />
+      ) : (
+        <Login setIsLogged={setIsLogged} />
+      )}
     </>
   );
 }

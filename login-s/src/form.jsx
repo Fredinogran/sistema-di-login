@@ -34,6 +34,8 @@ export default function Form() {
 
   return (
     <form onSubmit={handleSubmit}>
+      <h6>Registrati</h6>
+      <label>Nome</label>
       <input
         type="text"
         name="nome"
@@ -41,6 +43,7 @@ export default function Form() {
         onChange={handleChange}
         value={data.nome}
       />
+      <label>Cognome</label>
       <input
         type="text"
         name="cognome"
@@ -48,6 +51,7 @@ export default function Form() {
         onChange={handleChange}
         value={data.cognome}
       />
+      <label>Email</label>
       <input
         type="email"
         name="email"
@@ -55,6 +59,7 @@ export default function Form() {
         onChange={handleChange}
         value={data.email}
       />
+      <label>Password</label>
       <input
         type="password"
         name="password"
