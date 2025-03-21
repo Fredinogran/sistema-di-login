@@ -5,9 +5,8 @@ export default function Form() {
   const femminaRef = useRef(null)
   const maschioRef = useRef(null)
   const altroRef = useRef(null)
-  console.log(altroRef)
-  console.log(femminaRef)
-  console.log(maschioRef)
+
+  
   const [message, setMessage] = useState("");
   const [data, setData] = useState({
     id:"",
@@ -16,14 +15,14 @@ export default function Form() {
     email: "",
     password: "",
     genere: "",
-    eta:"",
+    eta: "",
     interessi:"",
     privacy: false,
   });
   function handleChange(event) {
     setData({
       ...data,
-      [event.target.name]: event.target.value,
+      [event.target.name]: event.target.name === "eta" ? parseInt(event.target.value) : event.target.value,
     });
   }
   function validate(password) {
@@ -49,6 +48,11 @@ export default function Form() {
       );
       return;
     }
+    if(data.eta <18){
+      setMessage("I minorenni non possono registrarsi")
+      return;
+    }  
+    
     const updateUsers = [...databaseUsers, data];
     localStorage.setItem("users", JSON.stringify(updateUsers));
     setMessage("registrazione effetuata con successo");
@@ -59,12 +63,13 @@ export default function Form() {
       password: "",
     });
   }
-
+ 
   return (
     <form onSubmit={handleSubmit}>
       <h6>Registrati</h6>
       <label>Nome</label>
       <input
+        required
         type="text"
         name="nome"
         placeholder="Inserisci il tuo nome"
@@ -73,6 +78,7 @@ export default function Form() {
       />
       <label>Cognome</label>
       <input
+        required
         type="text"
         name="cognome"
         placeholder="Inserire cognome"
@@ -81,6 +87,7 @@ export default function Form() {
       />
       <label>Email</label>
       <input
+        required
         type="email"
         name="email"
         placeholder="Inserire email"
@@ -89,6 +96,7 @@ export default function Form() {
       />
       <label>Password</label>
       <input
+        required
         type="password"
         name="password"
         placeholder="Password"
@@ -98,19 +106,21 @@ export default function Form() {
       <section className="input-genere">
       <p>Genere</p>
       <div>
-      <input type="radio" id="femmina" name="genere" value="femmina" ref={femminaRef} />
+      <input type="radio" id="femmina" name="genere" value="femmina" ref={femminaRef}  onChange={handleChange} />
       <label htmlFor="F">Femmina</label>
       </div>
        <div>
-      <input type="radio" id="maschio" name="genere" value="maschio" ref={maschioRef}  />
+      <input type="radio" id="maschio" name="genere" value="maschio" ref={maschioRef}  onChange={handleChange}  />
       <label htmlFor="maschio">Maschio</label>
       </div>
        <div>
-      <input type="radio" id="altro" name="genere" value="altro" ref={altroRef} />
+      <input type="radio" id="altro" name="genere" value="altro" ref={altroRef}  onChange={handleChange} />
       <label htmlFor="altro">Altro</label>
       </div>
       </section>
-
+      <label>Età</label>
+      <input type="number" name="eta" value={data.eta} onChange={handleChange} required min={18}/>
+      
 
       <button type="submit">Registrati</button>
       {message && <p>{message}</p>}
