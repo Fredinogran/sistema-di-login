@@ -58,7 +58,8 @@ export default function Form() {
       setMessage("Non hai acconsentito al trattamento dei dati");
       return;
     }
-    const userId = databaseUsers.length === 0 ? databaseUsers.length + 2 :  databaseUsers.length + 1
+    
+    const userId =  databaseUsers.length + 1
     const updateUsers = [...databaseUsers, data];
     localStorage.setItem("users", JSON.stringify(updateUsers) );
     setMessage("registrazione effetuata con successo");
