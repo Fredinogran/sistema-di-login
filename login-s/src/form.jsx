@@ -1,12 +1,24 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
+
 
 export default function Form() {
+  const femminaRef = useRef(null)
+  const maschioRef = useRef(null)
+  const altroRef = useRef(null)
+  console.log(altroRef)
+  console.log(femminaRef)
+  console.log(maschioRef)
   const [message, setMessage] = useState("");
   const [data, setData] = useState({
+    id:"",
     nome: "",
     cognome: "",
     email: "",
     password: "",
+    genere: "",
+    eta:"",
+    interessi:"",
+    privacy: false,
   });
   function handleChange(event) {
     setData({
@@ -83,6 +95,23 @@ export default function Form() {
         onChange={handleChange}
         value={data.password}
       />
+      <section className="input-genere">
+      <p>Genere</p>
+      <div>
+      <input type="radio" id="femmina" name="genere" value="femmina" ref={femminaRef} />
+      <label htmlFor="F">Femmina</label>
+      </div>
+       <div>
+      <input type="radio" id="maschio" name="genere" value="maschio" ref={maschioRef}  />
+      <label htmlFor="maschio">Maschio</label>
+      </div>
+       <div>
+      <input type="radio" id="altro" name="genere" value="altro" ref={altroRef} />
+      <label htmlFor="altro">Altro</label>
+      </div>
+      </section>
+
+
       <button type="submit">Registrati</button>
       {message && <p>{message}</p>}
     </form>
