@@ -1,13 +1,16 @@
-import { useState, useRef } from "react";
-
+import { use } from "react";
+import { useState, useRef , useEffect} from "react";
 export default function Form() {
   const femminaRef = useRef(null);
   const maschioRef = useRef(null);
   const altroRef = useRef(null);
+ 
+  // const [userId, setUserId] = useState(0)
+
 
   const [message, setMessage] = useState("");
   const [data, setData] = useState({
-    id: "",
+    id: 0 ,
     nome: "",
     cognome: "",
     email: "",
@@ -17,6 +20,8 @@ export default function Form() {
     interessi: "",
     privacy: false,
   });
+  
+  
   function handleChange(event) {
     setData({
       ...data,
@@ -33,7 +38,7 @@ export default function Form() {
 
   function handleSubmit(event) {
     event.preventDefault();
-    const databaseUsers = JSON.parse(localStorage.getItem("users")) || [];
+    const databaseUsers = JSON.parse(localStorage.getItem("users"), ) || [];
     const verificaUtente = databaseUsers.some((x) => x.email === data.email);
     if (verificaUtente) {
       setMessage("email già registrata");
@@ -53,21 +58,32 @@ export default function Form() {
       setMessage("I minorenni non possono registrarsi");
       return;
     }
-
+    if (!privacy) {
+      setMessage("Non hai acconsentito al trattamento dei dati");
+      return;
+    }
+    const userId = databaseUsers.length === 0 ? databaseUsers.length + 2 :  databaseUsers.length + 1
     const updateUsers = [...databaseUsers, data];
-    localStorage.setItem("users", JSON.stringify(updateUsers));
+    localStorage.setItem("users", JSON.stringify(updateUsers) );
     setMessage("registrazione effetuata con successo");
     setData({
+      id: userId ,
       nome: "",
       cognome: "",
       email: "",
       password: "",
+      genere: "",
+      eta: "",
+      interessi: "",
+      privacy: false,
     });
+   
   }
-
+  
+  
   return (
     <>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit}> ;
         <h6>Registrati</h6>
         <label>Nome</label>
         <input
