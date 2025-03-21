@@ -1,23 +1,22 @@
 import { useState, useRef } from "react";
 
-
 export default function Form() {
-  const femminaRef = useRef(null)
-  const maschioRef = useRef(null)
-  const altroRef = useRef(null)
-  console.log(altroRef)
-  console.log(femminaRef)
-  console.log(maschioRef)
+  const femminaRef = useRef(null);
+  const maschioRef = useRef(null);
+  const altroRef = useRef(null);
+  console.log(altroRef);
+  console.log(femminaRef);
+  console.log(maschioRef);
   const [message, setMessage] = useState("");
   const [data, setData] = useState({
-    id:"",
+    id: "",
     nome: "",
     cognome: "",
     email: "",
     password: "",
     genere: "",
-    eta:"",
-    interessi:"",
+    eta: "",
+    interessi: "",
     privacy: false,
   });
   function handleChange(event) {
@@ -96,22 +95,62 @@ export default function Form() {
         value={data.password}
       />
       <section className="input-genere">
-      <p>Genere</p>
-      <div>
-      <input type="radio" id="femmina" name="genere" value="femmina" ref={femminaRef} />
-      <label htmlFor="F">Femmina</label>
-      </div>
-       <div>
-      <input type="radio" id="maschio" name="genere" value="maschio" ref={maschioRef}  />
-      <label htmlFor="maschio">Maschio</label>
-      </div>
-       <div>
-      <input type="radio" id="altro" name="genere" value="altro" ref={altroRef} />
-      <label htmlFor="altro">Altro</label>
-      </div>
+        <p>Genere</p>
+        <div>
+          <input
+            type="radio"
+            id="femmina"
+            name="genere"
+            value="femmina"
+            ref={femminaRef}
+          />
+          <label htmlFor="F">Femmina</label>
+        </div>
+        <div>
+          <input
+            type="radio"
+            id="maschio"
+            name="genere"
+            value="maschio"
+            ref={maschioRef}
+          />
+          <label htmlFor="maschio">Maschio</label>
+        </div>
+        <div>
+          <input
+            type="radio"
+            id="altro"
+            name="genere"
+            value="altro"
+            ref={altroRef}
+          />
+          <label htmlFor="altro">Altro</label>
+        </div>
+      </section>
+      <section className="interesse">
+        <label for="interessi-select">scegli un interesse</label>
+
+        <select name="interessi" id="select_interessi">
+          <option value="">--scegli un interesse--</option>
+          <option value="tecnologia">tecnologia</option>
+          <option value="viaggi">viaggi</option>
+          <option value="sport">sport</option>
+          <option value="musica">musica</option>
+          <option value="animali">animali</option>
+          <option value="videogiochi">videogiochi</option>
+        </select>
       </section>
 
-
+      <section>
+        <label for="privacy">Accetta la privacy</label>
+        <input
+          type="checkbox"
+          id="privacy"
+          name="Policy"
+          value="Privacy Policy"
+          required
+        />
+      </section>
       <button type="submit">Registrati</button>
       {message && <p>{message}</p>}
     </form>
