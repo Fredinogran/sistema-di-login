@@ -1,6 +1,5 @@
 import { useState, useRef } from "react";
 
-
 export default function Form() {
   const femminaRef = useRef(null)
   const maschioRef = useRef(null)
@@ -44,7 +43,7 @@ export default function Form() {
     }
     if (!validate(data.password)) {
       setMessage(
-        "La password deve contenere almeno 8 caratteri una lettera maiuscola e un carattere speciale!"
+        "La password deve contenere almeno 8 caratteri una lettera maiuscola e un carattere speciale ed almeno 1 numero"
       );
       return;
     }
@@ -65,6 +64,7 @@ export default function Form() {
   }
  
   return (
+ <>   
     <form onSubmit={handleSubmit}>
       <h6>Registrati</h6>
       <label>Nome</label>
@@ -125,5 +125,6 @@ export default function Form() {
       <button type="submit">Registrati</button>
       {message && <p>{message}</p>}
     </form>
+</>   
   );
 }
