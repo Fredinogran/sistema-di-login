@@ -1,13 +1,9 @@
-import { use } from "react";
-import { useState, useRef , useEffect} from "react";
+import { useState, useRef } from "react";
 export default function Form() {
   const femminaRef = useRef(null);
   const maschioRef = useRef(null);
   const altroRef = useRef(null);
  
-  // const [userId, setUserId] = useState(0)
-
-
   const [message, setMessage] = useState("");
   const [data, setData] = useState({
     id: 0 ,
