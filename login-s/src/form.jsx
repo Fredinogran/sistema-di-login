@@ -44,7 +44,7 @@ export default function Form() {
     }
     if (!validate(data.password)) {
       setMessage(
-        "La password deve contenere almeno 8 caratteri una lettera maiuscola e un carattere speciale!"
+        "La password deve contenere almeno 8 caratteri una lettera maiuscola e un carattere speciale ed almeno 1 numero"
       );
       return;
     }
@@ -140,7 +140,6 @@ export default function Form() {
           <option value="videogiochi">videogiochi</option>
         </select>
       </section>
-
       <section>
         <label for="privacy">Accetta la privacy</label>
         <input
