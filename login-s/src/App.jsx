@@ -7,7 +7,7 @@ import Dashboard from "./Dashboard";
 function App() {
   const [isLogged, setIsLogged] = useState(false);
   useEffect(() => {
-    const userLogged = localStorage.getItem("isLogged");
+    const userLogged = localStorage.getItem("userLogged");
     if (userLogged) {
       setIsLogged(true);
     } else {

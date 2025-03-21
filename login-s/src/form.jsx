@@ -3,15 +3,23 @@ import { useState } from "react";
 export default function Form() {
   const [message, setMessage] = useState("");
   const [data, setData] = useState({
+    id: 0,
     nome: "",
     cognome: "",
     email: "",
     password: "",
+    sesso: "",
+    eta: "",
+    interessi: "",
   });
   function handleChange(event) {
     setData({
       ...data,
-      [event.target.name]: event.target.value,
+
+      [event.target.name]:
+        event.target.name === "eta"
+          ? parseInt(event.target.value)
+          : event.target.value,
     });
   }
   function validate(password) {
@@ -22,6 +30,7 @@ export default function Form() {
   function handleSubmit(event) {
     event.preventDefault();
     const databaseUsers = JSON.parse(localStorage.getItem("users")) || [];
+    setData({ ...data, id: databaseUsers.length + 1 });
     const verificaUtente = databaseUsers.some((x) => x.email === data.email);
     if (verificaUtente) {
       setMessage("email già registrata");
@@ -40,12 +49,16 @@ export default function Form() {
     const updateUsers = [...databaseUsers, data];
     localStorage.setItem("users", JSON.stringify(updateUsers));
     setMessage("registrazione effetuata con successo");
-    setData({
-      nome: "",
-      cognome: "",
-      email: "",
-      password: "",
-    });
+    // setData({
+    //   id: 0,
+    //   nome: "",
+    //   cognome: "",
+    //   email: "",
+    //   password: "",
+    //   sesso: "",
+    //   eta: "",
+    //   interessi: "",
+    // });
   }
 
   return (
@@ -89,7 +102,13 @@ export default function Form() {
       />
       <label>Sesso</label>
       <div required onChange={handleChange} value={data.sesso}>
-        <input type="radio" id="maschio" name="sesso" value={"Maschio"} />
+        <input
+          type="radio"
+          id="maschio"
+          name="sesso"
+          value={"Maschio"}
+          checked
+        />
         <label for="maschio">Maschio</label>
 
         <input type="radio" id="femmina" name="sesso" value={"Femmina"} />
@@ -104,6 +123,7 @@ export default function Form() {
         name="eta"
         id="eta"
         min="18"
+        placeholder="Inserire età"
         onChange={handleChange}
         value={data.eta}
         required
@@ -134,6 +154,7 @@ export default function Form() {
         <label>Acconsento</label>
       </div>
       <button type="submit">Registrati</button>
+      {message && <p>{message}</p>}
     </form>
   );
 }

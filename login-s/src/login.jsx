@@ -21,7 +21,7 @@ export default function Login({ setIsLogged }) {
     );
     if (userExist) {
       setMessage("Login effettuato con successo!");
-      localStorage.setItem("isLogged", true);
+      localStorage.setItem("userLogged", JSON.stringify(userExist));
       setIsLogged(true);
     } else {
       setMessage("Credenziali errate!");
