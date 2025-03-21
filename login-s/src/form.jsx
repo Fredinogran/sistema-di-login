@@ -1,6 +1,7 @@
 import { useState } from "react";
 
 export default function Form() {
+  const [message, setMessage] = useState("");
   const [data, setData] = useState({
     nome: "",
     cognome: "",
@@ -13,17 +14,32 @@ export default function Form() {
       [event.target.name]: event.target.value,
     });
   }
+  function validate(password) {
+    const pattern = /^(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+    return pattern.test(password);
+  }
+
   function handleSubmit(event) {
     event.preventDefault();
     const databaseUsers = JSON.parse(localStorage.getItem("users")) || [];
     const verificaUtente = databaseUsers.some((x) => x.email === data.email);
     if (verificaUtente) {
-      alert("email già registrata");
+      setMessage("email già registrata");
+      return;
+    }
+    if (data.password.length < 8) {
+      setMessage("La password deve contenere almeno 8 caratteri");
+      return;
+    }
+    if (!validate(data.password)) {
+      setMessage(
+        "La password deve contenere almeno 8 caratteri una lettera maiuscola e un carattere speciale!"
+      );
       return;
     }
     const updateUsers = [...databaseUsers, data];
     localStorage.setItem("users", JSON.stringify(updateUsers));
-    alert("registrazione effetuata con successo");
+    setMessage("registrazione effetuata con successo");
     setData({
       nome: "",
       cognome: "",
