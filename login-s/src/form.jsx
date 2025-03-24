@@ -1,9 +1,9 @@
 import { useState } from "react";
 
-export default function Form() {
+export default function htmlForm() {
   const [message, setMessage] = useState("");
   const [data, setData] = useState({
-    id: 0,
+    id: "0",
     nome: "",
     cognome: "",
     email: "",
@@ -30,7 +30,9 @@ export default function Form() {
   function handleSubmit(event) {
     event.preventDefault();
     const databaseUsers = JSON.parse(localStorage.getItem("users")) || [];
+    console.log(databaseUsers.length);
     setData({ ...data, id: databaseUsers.length + 1 });
+
     const verificaUtente = databaseUsers.some((x) => x.email === data.email);
     if (verificaUtente) {
       setMessage("email già registrata");
@@ -48,6 +50,7 @@ export default function Form() {
     }
     const updateUsers = [...databaseUsers, data];
     localStorage.setItem("users", JSON.stringify(updateUsers));
+    console.log(updateUsers);
     setMessage("registrazione effetuata con successo");
     // setData({
     //   id: 0,
@@ -109,13 +112,13 @@ export default function Form() {
           value={"Maschio"}
           checked
         />
-        <label for="maschio">Maschio</label>
+        <label htmlFor="maschio">Maschio</label>
 
         <input type="radio" id="femmina" name="sesso" value={"Femmina"} />
-        <label for="femmina">Femmina</label>
+        <label htmlFor="femmina">Femmina</label>
 
         <input type="radio" id="altro" name="sesso" value={"Altro"} />
-        <label for="altro">Altro</label>
+        <label htmlFor="altro">Altro</label>
       </div>
       <label>Età</label>
       <input
