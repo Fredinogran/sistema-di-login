@@ -5,14 +5,6 @@ export default function Login({ setIsLogged }) {
   const [password, setPassword] = useState("");
   const [message, setMessage] = useState("");
 
-  //const utenti = [
-  //{ email: "gianni@gmail.com", password: "gianni" },
-  //{ email: "franco@gmail.com", password: "franco" },
-  //{ email: "francesca@gmail.com", password: "fra" },
-  //;
-
-  //localStorage.setItem("utenti", JSON.stringify(utenti));
-
   function handleSubmit(event) {
     event.preventDefault();
     const users = JSON.parse(localStorage.getItem("users"));

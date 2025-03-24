@@ -6,13 +6,13 @@ export default function Dashboard({ setIsLogged }) {
     setIsLogged(false);
   }
   const user = JSON.parse(localStorage.getItem("UserLogged"));
-  console.log(user);
+  // console.log(user);
   const [modifica, setModifica] = useState(false);
   const [userMod, setUserMod] = useState(user);
 
   function handleChange(event) {
     setUserMod({
-      ...user,
+      ...userMod,
       [event.target.name]:
         event.target.name === "value"
           ? parseInt(event.target.value)
@@ -21,10 +21,13 @@ export default function Dashboard({ setIsLogged }) {
   }
 
   function handleSave() {
+    event.preventDefault()
     const users = JSON.parse(localStorage.getItem("users"));
-    const userSave = users.find((x) => x.id === user.id);
     const indice = users.findIndex((x) => x.id === userMod.id);
-    users.splice(indice, 1, userMod);
+    if (indice !== -1) {
+      users[indice] = userMod;
+    }
+    console.log(indice)
     localStorage.setItem("users", JSON.stringify(users));
     localStorage.setItem("UserLogged", JSON.stringify(userMod));
     setModifica(false);
@@ -38,14 +41,20 @@ export default function Dashboard({ setIsLogged }) {
       </div>
       {modifica ? (
         <>
+        <form >
+           <label htmlFor="nome">Nome</label>
           <input type="text" name="nome" onChange={handleChange} />
+          <label htmlFor="Cognome">Cognome</label>
           <input type="text" name="cognome" onChange={handleChange} />
+          <label htmlFor="eta">Età</label>
           <input type="number" name="eta" onChange={handleChange} />
+          <label htmlFor="interessi">Interessi</label>
           <input type="text" name="interessi" onChange={handleChange} />
           <button onClick={handleSave}>Salva</button>
+          </form>  
         </>
       ) : (
-        <div>
+        <div className="infoUtente">
           <h3>Info Utente</h3>
           <p>Nome: {user.nome}</p>
           <p>Cognome: {user.cognome}</p>

@@ -33,6 +33,31 @@ h6 {
 .errate {
   color: red;
 }
+/* DASHBOARD */
+
+.infoUtente{
+border-radius: 10px;
+box-shadow: 2px 4px 12px 0px #8080807d;
+padding: 25px 35px;
+display: flex;
+flex-direction: column;
+}
+.infoUtente h3{
+  font-size: 30px;
+}
+.infoUtente p{
+  box-shadow: inset 1px 1px 2px 0px #80808052;
+  width: 100%;
+  border-radius: 3px;
+  padding: 3px;
+  font-size: 20px;
+ 
+}
+.infoUtente button{
+margin: 14px;
+
+}
+
 /*syle default*/
 .logo {
   height: 6em;
