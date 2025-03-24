@@ -16,7 +16,7 @@ export default function Dashboard({ setIsLogged }) {
 
   function handleChange(event) {
     setUserMod({
-      ...user,
+      ...userMod,
       [event.target.name]:
         event.target.name === "eta"
           ? parseInt(event.target.value)
@@ -44,7 +44,7 @@ export default function Dashboard({ setIsLogged }) {
             name="nome"
             placeholder="Inserisci il tuo nome"
             onChange={handleChange}
-            value={user.nome}
+            value={userMod.nome}
             required
           />
           <label>Cognome</label>
@@ -53,25 +53,37 @@ export default function Dashboard({ setIsLogged }) {
             name="cognome"
             placeholder="Inserire cognome"
             onChange={handleChange}
-            value={user.cognome}
+            value={userMod.cognome}
             required
           />
 
           <label>Sesso</label>
-          <div required onChange={handleChange} value={user.sesso}>
+          <div required onChange={handleChange} value={userMod.sesso}>
             <input
               type="radio"
               id="maschio"
               name="sesso"
               value={"Maschio"}
-              checked
+              checked={userMod.sesso === "Maschio"}
             />
             <label htmlFor="maschio">Maschio</label>
 
-            <input type="radio" id="femmina" name="sesso" value={"Femmina"} />
+            <input
+              type="radio"
+              id="femmina"
+              name="sesso"
+              value={"Femmina"}
+              checked={userMod.sesso === "Femmina"}
+            />
             <label htmlFor="femmina">Femmina</label>
 
-            <input type="radio" id="altro" name="sesso" value={"Altro"} />
+            <input
+              type="radio"
+              id="altro"
+              name="sesso"
+              value={"Altro"}
+              checked={userMod.sesso === "Altro"}
+            />
             <label htmlFor="altro">Altro</label>
           </div>
           <label>Età</label>
@@ -82,7 +94,7 @@ export default function Dashboard({ setIsLogged }) {
             min="18"
             placeholder="Inserire età"
             onChange={handleChange}
-            value={user.eta}
+            value={userMod.eta}
             required
           />
           <label>Interesse</label>
@@ -90,7 +102,7 @@ export default function Dashboard({ setIsLogged }) {
             name="interessi"
             id="interessi"
             onChange={handleChange}
-            value={user.interessi}
+            value={userMod.interessi}
             required
           >
             <option value="">--Scegli un'opzione--</option>
@@ -110,6 +122,7 @@ export default function Dashboard({ setIsLogged }) {
           <p>Sesso: {user.sesso}</p>
           <p>Età: {user.eta}</p>
           <p>Interesse: {user.interessi}</p>
+          <p>Hai accettato la nostra privacy policy!</p>
         </div>
       )}
       <button onClick={handleModifica}>Modifica dati</button>

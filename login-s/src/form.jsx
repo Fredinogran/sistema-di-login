@@ -3,7 +3,7 @@ import { useState } from "react";
 export default function htmlForm() {
   const [message, setMessage] = useState("");
   const [data, setData] = useState({
-    id: "0",
+    id: "1",
     nome: "",
     cognome: "",
     email: "",
@@ -110,14 +110,26 @@ export default function htmlForm() {
           id="maschio"
           name="sesso"
           value={"Maschio"}
-          checked
+          checked={data.sesso === "Maschio"}
         />
         <label htmlFor="maschio">Maschio</label>
 
-        <input type="radio" id="femmina" name="sesso" value={"Femmina"} />
+        <input
+          type="radio"
+          id="femmina"
+          name="sesso"
+          value={"Femmina"}
+          checked={data.sesso === "Femmina"}
+        />
         <label htmlFor="femmina">Femmina</label>
 
-        <input type="radio" id="altro" name="sesso" value={"Altro"} />
+        <input
+          type="radio"
+          id="altro"
+          name="sesso"
+          value={"Altro"}
+          checked={data.sesso === "Altro"}
+        />
         <label htmlFor="altro">Altro</label>
       </div>
       <label>Età</label>
