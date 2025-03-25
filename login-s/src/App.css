@@ -12,12 +12,19 @@ form {
   padding: 1rem;
   box-shadow: 0 0 10px rgba(128, 128, 128, 0.719);
   border-radius: 10px;
+  margin-bottom: 10px;
+  border: dotted;
 }
 input {
   padding: 5px 10px;
   border-radius: 5px;
   border: none;
   box-shadow: 0 0 5px rgba(128, 128, 128, 0.719);
+  border: double;
+}
+
+button {
+  background-color: rgba(222, 184, 135, 0.726);
 }
 input:focus {
   outline-color: rgb(142, 184, 80);
@@ -35,27 +42,25 @@ h6 {
 }
 /* DASHBOARD */
 
-.infoUtente{
-border-radius: 10px;
-box-shadow: 2px 4px 12px 0px #8080807d;
-padding: 25px 35px;
-display: flex;
-flex-direction: column;
+.infoUtente {
+  border-radius: 10px;
+  box-shadow: 2px 4px 12px 0px #8080807d;
+  padding: 25px 35px;
+  display: flex;
+  flex-direction: column;
 }
-.infoUtente h3{
+.infoUtente h3 {
   font-size: 30px;
 }
-.infoUtente p{
+.infoUtente p {
   box-shadow: inset 1px 1px 2px 0px #80808052;
   width: 100%;
   border-radius: 3px;
   padding: 3px;
   font-size: 20px;
- 
 }
-.infoUtente button{
-margin: 14px;
-
+.infoUtente button {
+  margin: 14px;
 }
 
 /*syle default*/
