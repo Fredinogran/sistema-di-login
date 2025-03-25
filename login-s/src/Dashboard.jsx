@@ -14,20 +14,21 @@ export default function Dashboard({ setIsLogged }) {
     setUserMod({
       ...userMod,
       [event.target.name]:
-        event.target.name === "value"
+        event.target.name === "eta"
           ? parseInt(event.target.value)
           : event.target.value,
     });
   }
 
-  function handleSave() {
-    event.preventDefault()
+  function handleSave(event) {
+    event.preventDefault();
     const users = JSON.parse(localStorage.getItem("users"));
     const indice = users.findIndex((x) => x.id === userMod.id);
+    console.log(userMod);
     if (indice !== -1) {
       users[indice] = userMod;
     }
-    console.log(indice)
+    console.log(indice);
     localStorage.setItem("users", JSON.stringify(users));
     localStorage.setItem("UserLogged", JSON.stringify(userMod));
     setModifica(false);
@@ -41,17 +42,29 @@ export default function Dashboard({ setIsLogged }) {
       </div>
       {modifica ? (
         <>
-        <form >
-           <label htmlFor="nome">Nome</label>
-          <input type="text" name="nome" onChange={handleChange} />
-          <label htmlFor="Cognome">Cognome</label>
-          <input type="text" name="cognome" onChange={handleChange} />
-          <label htmlFor="eta">Età</label>
-          <input type="number" name="eta" onChange={handleChange} />
-          <label htmlFor="interessi">Interessi</label>
-          <input type="text" name="interessi" onChange={handleChange} />
-          <button onClick={handleSave}>Salva</button>
-          </form>  
+          <form onSubmit={handleSave}>
+            <label htmlFor="nome">Nome</label>
+            <input type="text" name="nome" onChange={handleChange} />
+            <label htmlFor="Cognome">Cognome</label>
+            <input type="text" name="cognome" onChange={handleChange} />
+            <label htmlFor="eta">Età</label>
+            <input type="number" name="eta" onChange={handleChange} />
+            <label htmlFor="interessi">Interessi</label>
+            <select
+              onChange={handleChange}
+              name="interessi"
+              id="select_interessi"
+            >
+              <option value="">--scegli un interesse--</option>
+              <option value="tecnologia">tecnologia</option>
+              <option value="viaggi">viaggi</option>
+              <option value="sport">sport</option>
+              <option value="musica">musica</option>
+              <option value="animali">animali</option>
+              <option value="videogiochi">videogiochi</option>
+            </select>
+            <button type="submit">Salva</button>
+          </form>
         </>
       ) : (
         <div className="infoUtente">
