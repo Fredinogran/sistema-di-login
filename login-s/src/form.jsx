@@ -164,16 +164,17 @@ export default function Form() {
           min={18}
         />
         <section className="interesse">
-          <label for="interessi-select">scegli un interesse</label>
+          <label htmlFor="interessi">scegli un interesse</label>
 
-          <select name="interessi" id="select_interessi">
-            <option value="">--scegli un interesse--</option>
+          <select name="interessi" id="select_interessi" onChange={handleChange} value={data.interessi}>
+            <optgroup label="interessi"> Scegli un interesse
             <option value="tecnologia">tecnologia</option>
             <option value="viaggi">viaggi</option>
             <option value="sport">sport</option>
             <option value="musica">musica</option>
             <option value="animali">animali</option>
             <option value="videogiochi">videogiochi</option>
+           </optgroup>
           </select>
         </section>
 
