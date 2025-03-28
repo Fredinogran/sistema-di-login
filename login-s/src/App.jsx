@@ -3,27 +3,18 @@ import "./App.css";
 import Form from "./form";
 import Login from "./login";
 import Dashboard from "./Dashboard";
+import UserProvider from "./context/UserContext";
 
 function App() {
-  const [isLogged, setIsLogged] = useState(false);
-  useEffect(() => {
-    const userLogged = localStorage.getItem("UserLogged");
-    if (userLogged) {
-      setIsLogged(true);
-    } else {
-      setIsLogged(false);
-    }
-  }, []);
-
   return (
-    <>
+    <UserProvider>
       <Form></Form>
       {isLogged ? (
         <Dashboard setIsLogged={setIsLogged} />
       ) : (
         <Login setIsLogged={setIsLogged} />
       )}
-    </>
+    </UserProvider>
   );
 }
 
