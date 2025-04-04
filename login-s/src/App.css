@@ -5,6 +5,35 @@
   text-align: center;
 }
 
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  padding: 1rem;
+  box-shadow: 0 0 10px rgba(128, 128, 128, 0.719);
+  border-radius: 10px;
+}
+input {
+  padding: 5px 10px;
+  border-radius: 5px;
+  border: none;
+  box-shadow: 0 0 5px rgba(128, 128, 128, 0.719);
+}
+input:focus {
+  outline-color: rgb(142, 184, 80);
+}
+label {
+  text-align: left;
+}
+
+h6 {
+  margin: 0;
+  font-size: 20px;
+}
+.errate {
+  color: red;
+}
+/*syle default*/
 .logo {
   height: 6em;
   padding: 1.5em;
