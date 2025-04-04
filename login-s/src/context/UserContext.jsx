@@ -1,17 +1,22 @@
-import { createContext } from "react";
+import { createContext, useEffect, useState } from "react";
 
 export const UserContext = createContext();
 function UserProvider({ children }) {
   const [user, setUser] = useState(null);
   const [users, setUsers] = useState([]);
+  useEffect(() => {
+    localStorage.setItem("users", JSON.stringify(users));
+  }, [users]);
   function registrati(userData) {
     const userExist = users.find((x) => x.email === userData.email);
     if (userExist) {
       return { esito: false, messaggio: "Email già registrata" };
     }
     setUsers((prev) => [...prev, userData]);
+    
     return { esito: true, messaggio: "Registrazione effettuata con successo!" };
   }
+  
   function login(email, password) {
     const userExist = users.find(
       (x) => x.email === email && x.password === password

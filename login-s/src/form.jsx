@@ -1,8 +1,11 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useContext } from "react";
+import { UserContext } from "./context/UserContext";
+
 export default function Form() {
   const femminaRef = useRef(null);
   const maschioRef = useRef(null);
   const altroRef = useRef(null);
+  const {registrati} = useContext(UserContext)
  
   const [message, setMessage] = useState("");
   const [data, setData] = useState({
