@@ -21,10 +21,8 @@ export default function Registrazione() {
 
   // Questa è la funzione che si attiverà al submit del form
   function handleSubmit(event) {
-    event.preventDefault() 
-    console.log("funziona!")
-    registrazione(user)
-
+    event.preventDefault(); // Impedisce il comportamento di default del form (evita il refresh della pagina)
+    registrazione(user); // Chiama la funzione 'registrazione' passando i dati dell'utente
   }
 
   return (
@@ -33,7 +31,12 @@ export default function Registrazione() {
         <h4>Registrazione</h4>
 
         <label>Nome</label>
-        <input type="text" name="nome" placeholder="Inserisci il tuo nome" onChange={handleChange}/>
+        <input
+          type="text"
+          name="nome"
+          placeholder="Inserisci il tuo nome"
+          onChange={handleChange}
+        />
 
         <label>Cognome</label>
         <input
@@ -44,7 +47,12 @@ export default function Registrazione() {
         />
 
         <label>Email</label>
-        <input type="email" name="email" placeholder="Inserisci la tua email" onChange={handleChange}/>
+        <input
+          type="email"
+          name="email"
+          placeholder="Inserisci la tua email"
+          onChange={handleChange}
+        />
 
         <label>Password</label>
         <input
