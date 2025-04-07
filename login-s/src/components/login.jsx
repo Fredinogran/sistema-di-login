@@ -55,7 +55,7 @@ export default function Login() {
       <span> non sei registrato? </span>{" "}
       <button onClick={() => navigate("/registrati")}>registrati</button>
       {
-        "si usa il componente Link di react router dom quando dobbiamo effetuare solamente con il renderizzamento senza altre operazione collaterali"
+        //si usa il componente Link di react router dom quando dobbiamo effetuare solamente con il renderizzamento senza altre operazione collaterali
       }
       <Link to="/registrati">registrati</Link>
     </div>
