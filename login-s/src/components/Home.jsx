@@ -1,4 +1,5 @@
 import Card from "./Card";
+import Footer from "./Footer";
 import { immobili } from "./Immobili";
 import Navbar from "./Navbar";
 
@@ -22,6 +23,7 @@ export default function Home() {
           </div>
         ))}
       </div>
+      <Footer />
     </>
   );
 }
