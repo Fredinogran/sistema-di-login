@@ -15,7 +15,7 @@ export default function Login() {
   // Funzione che si attiva quando cambiamo valore in un campo del form
   // Aggiorna dinamicamente il campo giusto in base al nome dell’input (email o password)
   function handleChange(event) {
-    setUser({ ...user, [event.target.name]: event.target.value });
+    setUser({ ...user, [event.target.name]: event.target.value, });
   }
 
   // Funzione che si attiva quando inviamo il form
@@ -53,7 +53,6 @@ export default function Login() {
         {error && <p>{error}</p>}
       </form>
       <span> non sei registrato? </span>{" "}
-      <button onClick={() => navigate("/registrati")}>registrati</button>
       {
         //si usa il componente Link di react router dom quando dobbiamo effetuare solamente con il renderizzamento senza altre operazione collaterali
       }

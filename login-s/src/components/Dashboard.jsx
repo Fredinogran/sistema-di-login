@@ -19,6 +19,9 @@ export default function Dashboard() {
       <p>Nome: {user.nome}</p>
       <p>Cognome: {user.cognome}</p>
       <p>Email: {user.email}</p>
+      <p>Età: {user.eta}</p>
+      <p>Indirizzo: {user.indirizzo}</p>
+      <p>Cellulare: {user.cellulare}</p>
 
       <button onClick={Handlelogout}>Logout</button>
     </div>

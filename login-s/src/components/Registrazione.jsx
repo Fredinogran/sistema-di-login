@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { use, useState } from "react";
 import { useAuth } from "../context/authContext";
 
 export default function Registrazione() {
@@ -14,12 +14,16 @@ export default function Registrazione() {
   });
 
   // Prendiamo la funzione di registrazione dal nostro context (quello creato in AuthProvider)
-  const { registrazione } = useAuth();
+  const { registrazione, error, validate} = useAuth();
+
 
   // Questa funzione si attiva ogni volta che l’utente scrive qualcosa in un input
   // Aggiorna dinamicamente lo stato dell’utente (basandosi sul nome del campo)
   function handleChange(event) {
-    setUser({ ...user, [event.target.name]: event.target.value });
+    setUser({ ...user, [event.target.name]:
+        event.target.name === "eta" || event.target.name === "cellulare"
+      ? parseInt(event.target.value)
+      : event.target.value});
   }
 
   // Questa è la funzione che si attiverà al submit del form
@@ -88,6 +92,7 @@ export default function Registrazione() {
 
         <button type="submit">Registrati</button>
       </form>
+      {error && <p>{error}</p>}
     </>
   );
 }
