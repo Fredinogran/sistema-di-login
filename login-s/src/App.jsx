@@ -1,5 +1,7 @@
 import "./App.css";
+import Card from "./components/Card";
 import Dashboard from "./components/Dashboard";
+import Home from "./components/Home";
 import Login from "./components/login";
 import Privacy from "./components/PrivateContent";
 import Registrazione from "./components/Registrazione";
@@ -11,6 +13,7 @@ function App() {
     <AuthProvider>
       <BrowserRouter>
         <Routes>
+          <Route path="/home" element={<Home></Home>}></Route>
           <Route path="/login" element={<Login></Login>}></Route>
           <Route
             path="/dashboard"

@@ -53,11 +53,11 @@ export default function Login() {
         {error && <p>{error}</p>}
       </form>
       <span> non sei registrato? </span>{" "}
-      <button onClick={() => navigate("/registrati")}>registrati</button>
+      <button onClick={() => navigate("/registrazione")}>registrati</button>
       {
         //si usa il componente Link di react router dom quando dobbiamo effetuare solamente con il renderizzamento senza altre operazione collaterali
       }
-      <Link to="/registrati">registrati</Link>
+      <Link to="/registrazione">registrati</Link>
     </div>
   );
 }
