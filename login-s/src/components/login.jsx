@@ -3,6 +3,7 @@ import { useState } from "react";
 
 import { useAuth } from "../context/authContext";
 import { Link, useNavigate } from "react-router-dom";
+import NavBar from "./navBar";
 // Importiamo il nostro hook personalizzato che ci dà accesso alla funzione login del context
 
 export default function Login() {
@@ -30,6 +31,7 @@ export default function Login() {
 
   return (
     <div>
+      <NavBar></NavBar>
       <form onSubmit={handleSubmit}>
         <p>Login</p>
 
@@ -56,7 +58,7 @@ export default function Login() {
       {
         //si usa il componente Link di react router dom quando dobbiamo effetuare solamente con il renderizzamento senza altre operazione collaterali
       }
-      <Link to="/registrati">registrati</Link>
+      <Link to="/registrazione">registrati</Link>
     </div>
   );
 }

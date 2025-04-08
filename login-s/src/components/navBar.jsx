@@ -1,13 +1,17 @@
 import { Link } from "react-router-dom";
+import iconCarrello from '../assets/icon/icon-carrello.png'
+import { useAuth } from "../context/authContext";
+
+
 
 export default function NavBar(){
+    const { user } = useAuth();
     return(
-       <div>
-        <Link to={"/"}>Home</Link>
-        <Link to={"/dashboard"}>Profilo</Link>
-        <Link to={"/login"}>Login</Link>
-        <Link to={"/registrazione"}>Registrati</Link>
-        <Link to={"/carello"}></Link>
+       <div className="navMenu">
+        <Link className="linkNav" to={"/"}>HOME</Link>
+        {user ? <Link className="linkNav" to={"/dashboard"}>PROFILO</Link> : <Link className="linkNav" to={"/login"}>LOGIN</Link> }
+        <Link className="linkNav" id="linkCarrello" to={"/carrello"}><img src={iconCarrello} alt="carrello"/></Link>
+        <div className="dot"></div>
        </div>
     )
 }

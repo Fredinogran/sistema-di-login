@@ -1,5 +1,6 @@
 import { use, useState } from "react";
 import { useAuth } from "../context/authContext";
+import NavBar from "./navBar";
 
 export default function Registrazione() {
   // Inizializziamo lo stato con un oggetto "user" che conterrà i dati inseriti dall’utente nel form
@@ -34,6 +35,7 @@ export default function Registrazione() {
 
   return (
     <>
+    <NavBar></NavBar>
       <form onSubmit={handleSubmit}>
         <h4>Registrazione</h4>
 

@@ -1,3 +1,10 @@
+import NavBar from "./navBar";
+
 export default function Carrello() {
-  return <h2>Carrello</h2>;
+  return(
+    <>
+    <NavBar></NavBar>
+    <h2>Carrello</h2>
+    </>
+  ) 
 }
