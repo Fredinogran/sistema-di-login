@@ -8,6 +8,9 @@ export default function Registrazione() {
     cognome: "",
     email: "",
     password: "",
+    eta:"",
+    indirizzo:"",
+    cellulare:"",
   });
 
   // Prendiamo la funzione di registrazione dal nostro context (quello creato in AuthProvider)
@@ -51,6 +54,27 @@ export default function Registrazione() {
           type="email"
           name="email"
           placeholder="Inserisci la tua email"
+          onChange={handleChange}
+        />
+        <label>Età</label>
+        <input
+          type="number"
+          name="eta"
+          placeholder="Inserisci la tua età"
+          onChange={handleChange}
+        />
+        <label>Indirizzo</label>
+        <input
+          type="text"
+          name="indirizzo"
+          placeholder="Inserisci il tuo indirizzo"
+          onChange={handleChange}
+        />
+        <label>Cellulare</label>
+        <input
+          type="tel"
+          name="cellulare"
+          placeholder="Inserisci il tuo cellulare"
           onChange={handleChange}
         />
 
