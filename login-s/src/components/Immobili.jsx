@@ -1,6 +1,7 @@
 export const immobili = [
   {
-    immagine: "https://example.com/immagine1.jpg",
+    immagine:
+      "https://media.pianetadesign.it/images/2020/07/appartamento-duplex-07.jpg",
     prezzo: 250000 + "€",
     via: "Via Roma 10, Milano",
     tipologie_di_casa: "Appartamento",
@@ -9,7 +10,8 @@ export const immobili = [
     parcheggio: "no",
   },
   {
-    immagine: "https://example.com/immagine2.jpg",
+    immagine:
+      "https://www.garofoli.com/wp-content/uploads/2023/10/villa-di-lusso-progetto-garofoli.jpg",
     prezzo: 320000 + "€",
     via: "Via Milano 22, Roma",
     tipologie_di_casa: "Villa",
@@ -18,7 +20,8 @@ export const immobili = [
     parcheggio: "si",
   },
   {
-    immagine: "https://example.com/immagine3.jpg",
+    immagine:
+      "https://startpreventivi.it/wp-content/themes/Avada-Child-Theme/images/Blog/Case-Appartamenti/Appartamento-moderno-elegante/2-appartamento-moderno-elegante.jpg",
     prezzo: 180000 + "€",
     via: "Via Torino 5, Torino",
     tipologie_di_casa: "Appartamento",
@@ -27,7 +30,8 @@ export const immobili = [
     parcheggio: "no",
   },
   {
-    immagine: "https://example.com/immagine4.jpg",
+    immagine:
+      "https://www.morabitoimmobiliare.it/file/2022/04/attico-casa-agenzia-morabito-immobiliare-milano.jpg",
     prezzo: 450000 + "€",
     via: "Via Napoli 18, Napoli",
     tipologie_di_casa: "Attico",
@@ -36,7 +40,8 @@ export const immobili = [
     parcheggio: "si",
   },
   {
-    immagine: "https://example.com/immagine5.jpg",
+    immagine:
+      "https://startpreventivi.it/wp-content/themes/Avada-Child-Theme/images/Blog/Case-Appartamenti/Appartamento-moderno-elegante/7-appartamento-moderno-elegante.jpg",
     prezzo: 280000 + "€",
     via: "Via Genova 3, Genova",
     tipologie_di_casa: "Appartamento",
