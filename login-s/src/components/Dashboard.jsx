@@ -13,13 +13,11 @@ export default function Dashboard() {
   }
 
   return (
-    <div>
-      <p>Dash</p>
-
+    <div className="dashboard">
+      <p>Dashboard</p>
       <p>Nome: {user.nome}</p>
       <p>Cognome: {user.cognome}</p>
       <p>Email: {user.email}</p>
-
       <button onClick={Handlelogout}>Logout</button>
     </div>
   );

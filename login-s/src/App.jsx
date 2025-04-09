@@ -1,5 +1,6 @@
 import "./App.css";
 import Dashboard from "./components/Dashboard";
+import Home from "./components/Home";
 import Login from "./components/login";
 import Privacy from "./components/PrivateContent";
 import Registrazione from "./components/Registrazione";
@@ -20,8 +21,9 @@ function App() {
               </Privacy>
             }
           ></Route>
-          <Route path="/registrazione" element={<Registrazione />}></Route>
+          <Route path="/registrati" element={<Registrazione />}></Route>
           <Route path="*" element={<Navigate to="/login"></Navigate>}></Route>
+          <Route path="/" element={<Home />}></Route>
         </Routes>
       </BrowserRouter>
     </AuthProvider>

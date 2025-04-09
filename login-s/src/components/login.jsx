@@ -30,9 +30,7 @@ export default function Login() {
 
   return (
     <div>
-      <form onSubmit={handleSubmit}>
-        <p>Login</p>
-
+      <form onSubmit={handleSubmit} className="log">
         <label>Email</label>
         <input
           type="email"
@@ -52,12 +50,14 @@ export default function Login() {
         <button type="submit">Login</button>
         {error && <p>{error}</p>}
       </form>
-      <span> non sei registrato? </span>{" "}
-      <button onClick={() => navigate("/registrati")}>registrati</button>
-      {
-        //si usa il componente Link di react router dom quando dobbiamo effetuare solamente con il renderizzamento senza altre operazione collaterali
-      }
-      <Link to="/registrati">registrati</Link>
+      <div className="noreg">
+        <span> non sei registrato? </span>
+
+        {
+          //si usa il componente Link di react router dom quando dobbiamo effetuare solamente con il renderizzamento senza altre operazione collaterali
+        }
+        <Link to="/registrati">registrati</Link>
+      </div>
     </div>
   );
 }

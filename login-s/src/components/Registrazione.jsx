@@ -27,9 +27,7 @@ export default function Registrazione() {
 
   return (
     <>
-      <form onSubmit={handleSubmit}>
-        <h4>Registrazione</h4>
-
+      <form onSubmit={handleSubmit} className="reg">
         <label>Nome</label>
         <input
           type="text"
