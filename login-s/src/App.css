@@ -16,3 +16,11 @@
   display: flex;
   flex-direction: row;
 }
+
+.logout {
+  display: flex;
+  border: double orange;
+  border-radius: 10px;
+  margin-left: 500px;
+  padding: 3px;
+}
