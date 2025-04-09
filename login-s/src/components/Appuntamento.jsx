@@ -1,31 +1,38 @@
 import { useState } from "react";
 import { useAuth } from "../context/authContext";
 export default function Appuntamento() {
-  const { user } = useAuth();
+  const { user, appuntamentos } = useAuth();
   const [appuntamento, setAppuntamento] = useState({
-    nome: "",
-    cognome: "",
-    email: "",
+    nome_appuntamento: "",
+    cognome_appuntamento: "",
+    email_appuntamento: "",
     tel: "",
     via_citta: "",
     data: "",
   });
 
   function handleChange(event) {
-    setAppuntamento({ ...user, [event.target.name]: event.target.value });
+    setAppuntamento({
+      ...appuntamento,
+      [event.target.name]: event.target.value,
+    });
   }
   function handleSubmit(event) {
     event.preventDefault();
+    console.log(appuntamento);
+    console.log(user);
+    appuntamentos(appuntamento);
+    console.log(user);
   }
   return (
     <>
-      <form onClick={handleSubmit}>
+      <form onSubmit={handleSubmit}>
         <h4>Prenota Appuntamento</h4>
 
         <label>Nome</label>
         <input
           type="text"
-          name="nome"
+          name="nome_appuntamento"
           placeholder="Inserisci il tuo nome"
           onChange={handleChange}
         />
@@ -33,7 +40,7 @@ export default function Appuntamento() {
         <label>Cognome</label>
         <input
           type="text"
-          name="cognome"
+          name="cognome_appuntamento"
           placeholder="Inserisci il tuo cognome"
           onChange={handleChange}
         />
@@ -41,7 +48,7 @@ export default function Appuntamento() {
         <label>Email</label>
         <input
           type="email"
-          name="email"
+          name="email_appuntamento"
           placeholder="Inserisci la tua email"
           onChange={handleChange}
         />
@@ -53,6 +60,7 @@ export default function Appuntamento() {
           onChange={handleChange}
         />
         <label>Via,Città</label>
+        {/* mettiamo select */}
         <input
           type="text"
           name="via_citta"
