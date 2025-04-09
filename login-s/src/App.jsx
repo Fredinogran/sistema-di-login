@@ -1,4 +1,5 @@
 import "./App.css";
+import Appuntamento from "./components/Appuntamento";
 import Card from "./components/Card";
 import Dashboard from "./components/Dashboard";
 import Home from "./components/Home";
@@ -24,6 +25,10 @@ function App() {
             }
           ></Route>
           <Route path="/registrazione" element={<Registrazione />}></Route>
+          <Route
+            path="/appuntamento"
+            element={<Appuntamento></Appuntamento>}
+          ></Route>
           <Route path="*" element={<Navigate to="/login"></Navigate>}></Route>
         </Routes>
       </BrowserRouter>

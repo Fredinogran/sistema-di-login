@@ -6,22 +6,24 @@ import Navbar from "./Navbar";
 export default function Home() {
   return (
     <>
-      <Navbar />
-      <div className="container">
-        {immobili.map((casa, index) => (
-          <div className="cards">
-            <Card
-              key={index}
-              immagine={casa.immagine}
-              prezzo={casa.prezzo}
-              via={casa.via}
-              tipologie_di_casa={casa.tipologie_di_casa}
-              camere_da_letto={casa.camere_da_letto}
-              bagni={casa.bagni}
-              parcheggio={casa.parcheggio}
-            ></Card>
-          </div>
-        ))}
+      <div className="contenitore">
+        <Navbar />
+        <div className="container">
+          {immobili.map((casa, index) => (
+            <div className="cards">
+              <Card
+                key={index}
+                immagine={casa.immagine}
+                prezzo={casa.prezzo}
+                via={casa.via}
+                tipologie_di_casa={casa.tipologie_di_casa}
+                camere_da_letto={casa.camere_da_letto}
+                bagni={casa.bagni}
+                parcheggio={casa.parcheggio}
+              ></Card>
+            </div>
+          ))}
+        </div>
       </div>
       <Footer />
     </>
