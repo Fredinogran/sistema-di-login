@@ -2,6 +2,7 @@ import Card from "./Card";
 import Footer from "./Footer";
 import { immobili } from "./Immobili";
 import Navbar from "./Navbar";
+import Footer from "./Footer";
 
 export default function Home() {
   return (
