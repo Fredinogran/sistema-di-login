@@ -31,12 +31,14 @@ export default function Login() {
   return (
     <div>
       <form onSubmit={handleSubmit} className="log">
+        <Link to="/">SpizzicoExpress</Link>
         <label>Email</label>
         <input
           type="email"
           name="email"
           placeholder="Inserisci la tua email"
           onChange={handleChange}
+          required
         />
 
         <label>Password</label>
@@ -45,6 +47,7 @@ export default function Login() {
           name="password"
           placeholder="Inserisci la tua password"
           onChange={handleChange}
+          required
         />
 
         <button type="submit">Login</button>

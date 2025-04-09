@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { useAuth } from "../context/authContext";
 import userImage from "../assets/utente.svg";
+import spizzico from "../assets/spizzico.png";
 
 export default function Home() {
   const { user } = useAuth();
@@ -26,6 +27,7 @@ export default function Home() {
         </div>
       </div>
       <div className="center">
+        <img src={spizzico} className="spizziImg"></img>
         <h3>🍕 Benvenuto su Pizzico Express</h3>
         <p>
           Il gusto che arriva da te, in un pizzico di tempo. Hai voglia di
