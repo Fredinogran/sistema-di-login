@@ -1,6 +1,7 @@
 import useSWR from "swr";
 import NavBar from "./navBar";
 import { useState, useEffect } from "react";
+import HeroSection from './hero'
 
 export default function Home(){
    const [messaggio, setMessaggio] = useState(null)
@@ -18,19 +19,18 @@ export default function Home(){
   if (error) return <p>Errore nel caricamento dei dati</p>;
 
   function handleAggiungiProdotto(prodotto){
-  
     setProdotti((prev)=> [...prev, prodotto])
-    console.log(prodotto)
     setMessaggio(`Aggiunto al carrello: ${prodotto.title}`)
     setTimeout(() => {
       setMessaggio(null)
-    }, 3000);
+    }, 1000);
   }
   return (
     <>
       <NavBar />
+      <HeroSection></HeroSection>
       <h2 className="text-2xl font-bold p-4">Home</h2>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 p-4">
+      <div className="grid grid-cols-1 md:grid-cols-2  lg:grid-cols-3 gap-6 p-4">
         {data.map((prodotto) => (
           <a
             key={prodotto.id}

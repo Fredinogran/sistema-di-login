@@ -1,6 +1,5 @@
-
 import { useState, useEffect } from "react";
-import NavBar from "./navBar"; // assicurati che sia importato correttamente
+import NavBar from "./navBar"; 
 
 export default function Carrello() {
   const [prodotti, setProdotti] = useState([]);
@@ -10,7 +9,16 @@ export default function Carrello() {
     const prodottiConQuantita = savedProdotti.map((p) => ({
       ...p,
       quantity: p.quantity || 1,
-    }));
+    })).reduce((acc, curr) => {
+      const esistente = acc.find(p => p.id === curr.id);
+      if (esistente) {
+        esistente.quantity += curr.quantity || 1;
+      } else {
+        acc.push({ ...curr, quantity: curr.quantity || 1 });
+      }
+      return acc;
+    }, []);
+  
     setProdotti(prodottiConQuantita);
   }, []);
 
@@ -30,7 +38,7 @@ export default function Carrello() {
 
   const subtotal = prodotti.reduce((acc, p) => acc + p.price * p.quantity, 0);
   const vat = subtotal * 0.22; // IVA al 22%
-  const discount = 20;
+  const discount = subtotal * 0.1;
   const total = subtotal + vat - discount;
 
   return (
@@ -41,7 +49,7 @@ export default function Carrello() {
         <div className="mx-auto max-w-screen-xl px-4 py-8 sm:px-6 sm:py-12 lg:px-8">
           <div className="mx-auto max-w-3xl">
             <header className="text-center">
-              <h1 className="text-xl font-bold text-gray-900 sm:text-3xl">
+              <h1 className="text-xl font-bold text-rose-500 sm:text-3xl">
                 Your Cart
               </h1>
             </header>
@@ -96,7 +104,17 @@ export default function Carrello() {
               <div className="mt-8 flex justify-end border-t border-gray-100 pt-8">
                 <div className="w-screen max-w-lg space-y-4">
                   <dl className="space-y-0.5 text-sm text-gray-700">
-                    <div className="flex justify-between">
+                  <div className="flex flex-col justify-between">
+                {prodotti.map((prodotto) => ( 
+                  <div className="flex flex-row justify-between">
+                  <dt>prod.</dt>
+                  <dd>{prodotto.quantity === 1 ? prodotto.price : prodotto.price * prodotto.quantity }</dd>
+                  </div>  
+                  ))
+                 }
+                  
+                </div>
+                  <div className="flex justify-between">
                       <dt>Subtotal</dt>
                       <dd>£{subtotal.toFixed(2)}</dd>
                     </div>
@@ -107,7 +125,7 @@ export default function Carrello() {
                     </div>
 
                     <div className="flex justify-between">
-                      <dt>Discount</dt>
+                      <dt>Discount(-10%)</dt>
                       <dd>-£{discount.toFixed(2)}</dd>
                     </div>
 
@@ -116,12 +134,31 @@ export default function Carrello() {
                       <dd>£{total.toFixed(2)}</dd>
                     </div>
                   </dl>
-
+                  <div className="flex justify-end">
+                <span
+                  className="inline-flex items-center justify-center rounded-full bg-indigo-100 px-2.5 py-0.5 text-indigo-700"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    strokeWidth="1.5"
+                    stroke="currentColor"
+                    className="-ms-1 me-1.5 size-4"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      d="M16.5 6v.75m0 3v.75m0 3v.75m0 3V18m-9-5.25h5.25M7.5 15h3M3.375 5.25c-.621 0-1.125.504-1.125 1.125v3.026a2.999 2.999 0 010 5.198v3.026c0 .621.504 1.125 1.125 1.125h17.25c.621 0 1.125-.504 1.125-1.125v-3.026a2.999 2.999 0 010-5.198V6.375c0-.621-.504-1.125-1.125-1.125H3.375z"
+                    />
+                  </svg>
+                  <p className="text-xs whitespace-nowrap">2 Discounts Applied</p>
+                </span>
+              </div>
                   <div className="flex justify-end">
                     <a
                       href="#"
-                      className="block rounded-sm bg-gray-700 px-5 py-3 text-sm text-gray-100 transition hover:bg-gray-600"
-                    >
+                      className="rounded-md bg-sky-300 px-5 py-2.5 text-sm font-medium text-white shadow-sm hover:bg-blue-500">
                       Checkout
                     </a>
                   </div>

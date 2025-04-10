@@ -7,7 +7,9 @@ import logo from '../assets/icon/logo-transparent.png';
 export default function NavBar(){
     const { user } = useAuth();
     return (
-      <header className="bg-sky-800 dark:bg-gray-900">
+      // className="bg-sky-800 dark:bg-gray-900"
+      // class="absolute transitiona-all duration-1000 opacity-70 -inset-px bg-gradient-to-r from-[#44BCFF] via-[#FF44EC] to-[#FF675E] rounded-xl blur-lg group-hover:opacity-100 group-hover:-inset-1 group-hover:duration-200 animate-tilt">
+      <header  className="bg-gradient-to-r from-[#44BCFF] via-[#FF44EC] to-[#FF675E]">
         <div className="mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-8">
           <div className="flex h-20 items-center justify-between">
             <div className="md:flex md:items-center md:gap-12">
@@ -38,14 +40,14 @@ export default function NavBar(){
                 {user ? (
                   <Link
                     to={"/dashboard"}
-                    className="rounded-md bg-sky-950 px-5 py-2.5 text-sm font-medium text-white shadow-sm dark:hover:bg-sky-700"
+                    className="rounded-md bg-sky-300 px-5 py-2.5 text-sm font-medium text-white shadow-sm hover:bg-blue-500"
                   >
                     PROFILO
                   </Link>
                 ) : (
                   <Link
                     to={"/login"}
-                    className="rounded-md bg-sky-950 px-5 py-2.5 text-sm font-medium text-white shadow-sm dark:hover:bg-sky-700"
+                    className="rounded-md bg-sky-300 px-5 py-2.5 text-sm font-medium text-white shadow-sm hover:bg-blue-500"
                   >
                     LOGIN
                   </Link>
