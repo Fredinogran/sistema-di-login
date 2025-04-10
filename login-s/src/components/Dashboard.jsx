@@ -7,12 +7,9 @@ import Footer from "./Footer";
 export default function Dashboard() {
   // Estraiamo 'user' e 'logout' dal context
   // 'user' contiene i dati dell'utente loggato e 'logout' è la funzione per fare logout
-  const { user, logout } = useAuth();
+  const { user } = useAuth();
   const navigate = useNavigate();
-  function Handlelogout() {
-    logout();
-    navigate("/login");
-  }
+
   function handleAppuntamento() {
     navigate("/appuntamento");
   }
@@ -55,7 +52,7 @@ export default function Dashboard() {
             <strong>I miei appuntamenti:</strong>
           </h1>
           {user.appuntamenti.map((x) => (
-            <div>
+            <div className="mt-6">
               <a
                 href="#"
                 className="block rounded-md border border-gray-300 p-4 shadow-sm sm:p-6"
@@ -95,20 +92,16 @@ export default function Dashboard() {
         </div>
         <div className="flex justify-end gap-4">
           <button
-            className=" block rounded-md bg-teal-600 px-5 py-2.5 text-sm font-medium text-white transition hover:bg-teal-700"
+            className=" mt-3 block rounded-md bg-teal-600 px-5 py-2.5 text-sm font-medium text-white transition hover:bg-teal-700"
             onClick={handleAppuntamento}
           >
             Prenota Appuntamento
           </button>
-          <button
-            className=" block rounded-md bg-teal-600 px-5 py-2.5 text-sm font-medium text-white transition hover:bg-teal-700"
-            onClick={Handlelogout}
-          >
-            Logout
-          </button>
         </div>
       </div>
-      <Footer />
+      <div className="mt-66">
+        <Footer />
+      </div>
     </div>
   );
 }

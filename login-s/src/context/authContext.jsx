@@ -69,8 +69,14 @@ export default function AuthProvider({ children }) {
     setUser(null);
   }
   function appuntamentos(userApp) {
-    setUser({ ...user, ...userApp });
-    localStorage.setItem("user", JSON.stringify(user));
+    const utenteAggiornato = {
+      ...user,
+      appuntamenti: [...user.appuntamenti, userApp],
+    };
+
+    // Aggiorniamo lo stato e salviamo nel localStorage
+    setUser(utenteAggiornato);
+    localStorage.setItem("user", JSON.stringify(utenteAggiornato));
   }
   // Qui forniamo tutti i dati e le funzioni utili a chiunque userà useAuth() nella propria componente
   return (
