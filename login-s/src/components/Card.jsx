@@ -10,10 +10,10 @@ export default function Card({
   bagni,
   parcheggio,
 }) {
-  const { login } = useAuth();
+  const { user } = useAuth();
   const navigate = useNavigate();
   function handleClick() {
-    if (login) {
+    if (user) {
       navigate("/appuntamento");
     } else {
       navigate("/login");

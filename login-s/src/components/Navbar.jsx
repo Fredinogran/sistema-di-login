@@ -1,4 +1,14 @@
+import { useAuth } from "../context/authContext";
+import { useNavigate } from "react-router-dom";
 export default function Navbar() {
+  const navigate = useNavigate();
+  const { user, logout } = useAuth();
+  function handleDashboard() {
+    navigate("/dashboard");
+  }
+  function handleLogout() {
+    logout();
+  }
   return (
     <>
       <header className="bg-white">
@@ -72,47 +82,58 @@ export default function Navbar() {
               </ul>
             </nav>
 
-            <div className="flex items-center gap-4">
-              <div className="sm:flex sm:gap-4">
-                <a
-                  className="block rounded-md bg-teal-600 px-5 py-2.5 text-sm font-medium text-white transition hover:bg-teal-700"
-                  href="http://localhost:5173/login"
-                >
-                  Login
-                </a>
+            {user ? (
+              <>
+                <div className="flex flex-1 items-center justify-end md:justify-end gap-5">
+                  <div className="sm:flex sm:gap-3">
+                    <img
+                      className="logo"
+                      src="src/assets/user-circle-svgrepo-com.png"
+                      alt=""
+                    />
+                    <p className="flex items-center">
+                      {user.nome} {user.cognome}
+                    </p>
+                    <a
+                      className=" flex block rounded-md bg-teal-600 px-5 py-2.5 text-sm font-medium text-white transition hover:bg-teal-700 "
+                      href="http://localhost:5173/home"
+                    >
+                      Home
+                    </a>
+                    <button
+                      className="block rounded-md bg-teal-600 px-5 py-2.5 text-sm font-medium text-white transition hover:bg-teal-700"
+                      onClick={handleDashboard}
+                    >
+                      Dashboard
+                    </button>
+                    <button
+                      className="block rounded-md bg-teal-600 px-5 py-2.5 text-sm font-medium text-white transition hover:bg-teal-700"
+                      onClick={handleLogout}
+                    >
+                      Logout
+                    </button>
+                  </div>
+                </div>
+              </>
+            ) : (
+              <div className="flex items-center gap-4">
+                <div className="sm:flex sm:gap-4">
+                  <a
+                    className="block rounded-md bg-teal-600 px-5 py-2.5 text-sm font-medium text-white transition hover:bg-teal-700"
+                    href="http://localhost:5173/login"
+                  >
+                    Login
+                  </a>
 
-                <a
-                  className="hidden rounded-md bg-gray-100 px-5 py-2.5 text-sm font-medium text-teal-600 transition hover:text-teal-600/75 sm:block"
-                  href="http://localhost:5173/registrazione"
-                >
-                  Registrati
-                </a>
-                <a
-                  className="block rounded-md bg-teal-600 px-5 py-2.5 text-sm font-medium text-white transition hover:bg-teal-700"
-                  href="http://localhost:5173/home"
-                >
-                  Home
-                </a>
+                  <a
+                    className="hidden rounded-md bg-gray-100 px-5 py-2.5 text-sm font-medium text-teal-600 transition hover:text-teal-600/75 sm:block"
+                    href="http://localhost:5173/registrazione"
+                  >
+                    Registrati
+                  </a>
+                </div>
               </div>
-
-              <button className="block rounded-sm bg-gray-100 p-2.5 text-gray-600 transition hover:text-gray-600/75 md:hidden">
-                <span className="sr-only">Toggle menu</span>
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="size-5"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M4 6h16M4 12h16M4 18h16"
-                  />
-                </svg>
-              </button>
-            </div>
+            )}
           </div>
         </div>
       </header>

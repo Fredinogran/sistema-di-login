@@ -43,3 +43,9 @@
   margin-right: 250px;
   max-width: 1220px;
 }
+
+.logo {
+  height: 45px;
+  width: 45px;
+  margin-right: 3px;
+}

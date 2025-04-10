@@ -90,12 +90,18 @@ export default function Login() {
         <div className="mt-6 text-center text-sm text-gray-600">
           Non hai un Account?
           <a
-            href="#"
+            href="/registrazione"
             className="text-indigo-600 hover:text-indigo-500 font-medium"
           >
-            <Link to="/registrazione">Registrati</Link>
+            Registrati
           </a>
         </div>
+        <a
+          href="/home"
+          className=" flex justify-center text-indigo-600 hover:text-indigo-500 font-medium"
+        >
+          Ritorna alla Home
+        </a>
       </div>
     </div>
   );

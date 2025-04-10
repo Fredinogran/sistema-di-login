@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useAuth } from "../context/authContext";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 
 export default function Registrazione() {
   // Inizializziamo lo stato con un oggetto "user" che conterrà i dati inseriti dall’utente nel form
@@ -137,8 +137,19 @@ export default function Registrazione() {
             <span className="text-sm text-gray-500 dark:text-gray-300">
               Hai già un Account?{" "}
             </span>
-            <a href="/login" className="text-blue-500 hover:text-blue-600">
+            <a
+              href="/login"
+              className=" text-indigo-600 hover:text-indigo-500 "
+            >
               Login
+            </a>
+          </div>
+          <div>
+            <a
+              href="/home"
+              className="flex justify-center text-indigo-600 hover:text-indigo-500 font-medium"
+            >
+              Ritorna alla home
             </a>
           </div>
         </div>

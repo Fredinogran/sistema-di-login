@@ -13,6 +13,9 @@ export default function Dashboard() {
     logout();
     navigate("/login");
   }
+  function handleAppuntamento() {
+    navigate("/appuntamento");
+  }
 
   return (
     <div>
@@ -93,9 +96,7 @@ export default function Dashboard() {
         <div className="flex justify-end gap-4">
           <button
             className=" block rounded-md bg-teal-600 px-5 py-2.5 text-sm font-medium text-white transition hover:bg-teal-700"
-            onClick={() => {
-              <Link to="/appuntamento" />;
-            }}
+            onClick={handleAppuntamento}
           >
             Prenota Appuntamento
           </button>
