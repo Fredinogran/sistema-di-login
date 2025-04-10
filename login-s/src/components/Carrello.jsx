@@ -4,11 +4,30 @@ import NavBar from "./navBar";
 export default function Carrello() {
   const [prodotti, setProdotti] = useState([]);
   
-  useEffect(() => {
-    // const savedProdotti = JSON.parse(localStorage.getItem("prodotti") || "[]");
-    setProdotti(JSON.parse(localStorage.getItem("prodotti")) || "[]")
+ 
+  
+  
+
+  
+  useEffect((event) => {
+     const savedProdotti = JSON.parse(localStorage.getItem("prodotti") || "[]");
+     const prodottiConQuantita = savedProdotti.map(p => ({
+       ...p,
+       quantity: 1 
+      }));
+      setProdotti(prodottiConQuantita)
   }, []);
-   console.log(prodotti)
+ 
+
+   function handleQuantityChange(id, newQuantity) {
+    const updatedProdotti = prodotti.map(p =>
+      p.id === id ? { ...p, quantity: parseInt(newQuantity) } : p,
+      prezzo = p.price * newQuantity
+    );
+   
+    localStorage.setItem("prodotti", JSON.stringify(updatedProdotti));
+    
+   }
   return(
     <>
     <NavBar></NavBar>
@@ -34,9 +53,10 @@ export default function Carrello() {
                 <label htmlFor="Line1Qty" className="sr-only"> Quantity </label>
 
                 <input
+                  onChange={(e) => handleQuantityChange(prodotto.id, e.target.value)}
                   type="number"
                   min="1"
-                  value="1"
+                  defaultValue={prodotto.quantity}
                   id="Line1Qty"
                   className="h-8 w-12 rounded-sm border-gray-200 bg-gray-50 p-0 text-center text-xs text-gray-600 [-moz-appearance:_textfield] focus:outline-hidden [&::-webkit-inner-spin-button]:m-0 [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:m-0 [&::-webkit-outer-spin-button]:appearance-none"
                 />
@@ -74,17 +94,22 @@ export default function Carrello() {
                   <dd>£250</dd>
                 </div>
   
-                <div className="flex justify-between">
+                <div className="flex flex-col justify-between">
                 {prodotti.map((prodotto) => ( 
-                  <>
+                  <div className="flex flex-row justify-between">
                   <dt>VAT</dt>
-                  <dd>{prodotto.price}</dd>
-                  </>  
+                  <dd>{ prodotto.price}</dd>
+                  </div>  
                   ))
                  }
                   
                 </div>
-  
+
+                <div className="flex justify-between">
+                <dt>Discount</dt>
+                <dd>-£20</dd>
+               </div>
+
                 
   
                 <div className="flex justify-between !text-base font-medium">

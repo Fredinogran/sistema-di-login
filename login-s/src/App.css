@@ -12,3 +12,7 @@
   color: black;
   transform: translate(-50%, -50%);
 }
+.vat{
+  display: flex;
+  flex-direction: column;
+}
