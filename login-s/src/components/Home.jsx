@@ -1,3 +1,4 @@
+import Call from "./CallToAct";
 import Card from "./Card";
 import Footer from "./Footer";
 import { immobili } from "./Immobili";
@@ -8,6 +9,7 @@ export default function Home() {
     <>
       <div className="contenitore">
         <Navbar />
+        <Call />
         <div className="container">
           {immobili.map((casa, index) => (
             <div className="cards">

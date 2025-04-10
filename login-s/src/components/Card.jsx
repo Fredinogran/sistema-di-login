@@ -21,13 +21,15 @@ export default function Card({
   }
   return (
     <>
-      <a href="#" className="block rounded-lg p-4 shadow-xs shadow-indigo-100">
+      <a
+        href="#"
+        className="block rounded-lg p-4 shadow-xs shadow-indigo-100 w-[400px] min-h-[420px]"
+      >
         <img
           alt=""
           src={immagine}
           className="h-56 w-full rounded-md object-cover"
         />
-
         <div className="mt-2">
           <dl>
             <div>

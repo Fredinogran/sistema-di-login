@@ -29,7 +29,7 @@ function App() {
             path="/appuntamento"
             element={<Appuntamento></Appuntamento>}
           ></Route>
-          <Route path="*" element={<Navigate to="/login"></Navigate>}></Route>
+          <Route path="*" element={<Navigate to="/home"></Navigate>}></Route>
         </Routes>
       </BrowserRouter>
     </AuthProvider>

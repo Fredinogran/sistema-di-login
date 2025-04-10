@@ -20,14 +20,17 @@ export default function Navbar() {
 
           <div className="flex flex-1 items-center justify-end md:justify-between">
             <nav aria-label="Global" className="hidden md:block">
-              <ul className="flex items-center gap-6 text-sm">
+              <ul className="text-3xl font-bold text-gray-800">
+                <li>
+                  <h1 className=""> Agenzia Immobiliare Marè </h1>
+                </li>
+
                 <li>
                   <a
                     className="text-gray-500 transition hover:text-gray-500/75"
                     href="#"
                   >
                     {" "}
-                    About{" "}
                   </a>
                 </li>
 
@@ -37,7 +40,6 @@ export default function Navbar() {
                     href="#"
                   >
                     {" "}
-                    Careers{" "}
                   </a>
                 </li>
 
@@ -47,7 +49,6 @@ export default function Navbar() {
                     href="#"
                   >
                     {" "}
-                    History{" "}
                   </a>
                 </li>
 
@@ -57,7 +58,6 @@ export default function Navbar() {
                     href="#"
                   >
                     {" "}
-                    Services{" "}
                   </a>
                 </li>
 
@@ -67,17 +67,6 @@ export default function Navbar() {
                     href="#"
                   >
                     {" "}
-                    Projects{" "}
-                  </a>
-                </li>
-
-                <li>
-                  <a
-                    className="text-gray-500 transition hover:text-gray-500/75"
-                    href="#"
-                  >
-                    {" "}
-                    Blog{" "}
                   </a>
                 </li>
               </ul>
@@ -96,7 +85,13 @@ export default function Navbar() {
                   className="hidden rounded-md bg-gray-100 px-5 py-2.5 text-sm font-medium text-teal-600 transition hover:text-teal-600/75 sm:block"
                   href="http://localhost:5173/registrazione"
                 >
-                  Register
+                  Registrati
+                </a>
+                <a
+                  className="block rounded-md bg-teal-600 px-5 py-2.5 text-sm font-medium text-white transition hover:bg-teal-700"
+                  href="http://localhost:5173/home"
+                >
+                  Home
                 </a>
               </div>
 
