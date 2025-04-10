@@ -1,6 +1,7 @@
 import { Navigate, useNavigate } from "react-router-dom";
 import { useAuth } from "../context/authContext";
 import Navbar from "./Navbar";
+import Footer from "./Footer";
 // Importiamo il nostro hook useAuth che ci dà accesso all'utente loggato e alla funzione di logout
 
 export default function Dashboard() {
@@ -93,6 +94,7 @@ export default function Dashboard() {
           Logout
         </button>
       </div>
+      <Footer />
     </div>
   );
 }
