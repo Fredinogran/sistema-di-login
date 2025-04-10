@@ -1,18 +1,30 @@
 import useSWR from "swr";
 import NavBar from "./navBar";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 export default function Home(){
-  const [aggiunto, setAggiunto] = useState()
-  const [ordine, setOrdine] = useState([])
+   const [messaggio, setMessaggio] = useState(null)
+    const [prodotti, setProdotti] = useState(() => {
+    const prodottiLocal = localStorage.getItem("prodotti");
+    return prodottiLocal ? JSON.parse(prodottiLocal) : [];
+  });
+
+  useEffect(() => {
+    localStorage.setItem("prodotti", JSON.stringify(prodotti));
+  }, [prodotti]);
+
   const { error, data } = useSWR("https://fakestoreapi.com/products");
-  console.log(data);
   if (!data && !error) return <p>Loading...</p>;
   if (error) return <p>Errore nel caricamento dei dati</p>;
 
-  function handleAggiungiProdotto(){
-    
- setOrdine((prev)=> [...prev, aggiunto])
+  function handleAggiungiProdotto(prodotto){
+  
+    setProdotti((prev)=> [...prev, prodotto])
+    console.log(prodotto)
+    setMessaggio(`Aggiunto al carrello: ${prodotto.title}`)
+    setTimeout(() => {
+      setMessaggio(null)
+    }, 3000);
   }
   return (
     <>
@@ -50,7 +62,7 @@ export default function Home(){
                   <button
                     onClick={(e) => {
                       e.preventDefault();
-                      console.log("Aggiunto al carrello:", prodotto.title);
+                      handleAggiungiProdotto(prodotto)
                     }}
                     className="bg-pink-500 hover:bg-pink-600 text-white font-semibold py-2 px-4 rounded-xl transition"
                   >
@@ -62,6 +74,7 @@ export default function Home(){
           </a>
         ))}
       </div>
+        {messaggio && <div className="popUp">{messaggio}</div>}
     </>
   );
 }
