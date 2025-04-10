@@ -30,35 +30,55 @@ export default function Login() {
   }
 
   return (
-    <div>
+    <div className="bg-white">
       <NavBar></NavBar>
-      <form onSubmit={handleSubmit}>
-        <p>Login</p>
+      <div className="flex justify-center items-center min-h-screen bg-gray-100">
+        <form
+          onSubmit={handleSubmit}
+          className="w-full max-w-md bg-white p-8 rounded-2xl shadow-xl space-y-5"
+        >
+          <p className="text-2xl font-semibold text-center text-gray-700 mb-4">
+            Login
+          </p>
+          <label className="block text-gray-600 mb-1">Email</label>
+          <input
+            type="email"
+            name="email"
+            placeholder="Inserisci la tua email"
+            onChange={handleChange}
+            className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 text-black"
+          />
+          <label className="block text-gray-600 mb-1">Password</label>
+          <input
+            type="password"
+            name="password"
+            placeholder="Inserisci la tua password"
+            onChange={handleChange}
+            className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 text-black"
+          />
+          <button
+            type="submit"
+            className="w-full bg-sky-800 text-white py-2 rounded-lg hover:bg-blue-700 transition duration-200 text-black"
+          >
+            Login
+          </button>
+          {error && <p>{error}</p>}
+          <span className="text-1xl font-semibold text-center text-gray-700 mb-4">
+            {" "}
+            Non sei registrato?{" "}
+            <Link
+              className="text-2xl font-semibold text-center text-sky-800 mb-4 text-sky-800"
+              to="/registrazione"
+            >
+              Registrati
+            </Link>
+          </span>{" "}
+        </form>
 
-        <label>Email</label>
-        <input
-          type="email"
-          name="email"
-          placeholder="Inserisci la tua email"
-          onChange={handleChange}
-        />
-
-        <label>Password</label>
-        <input
-          type="password"
-          name="password"
-          placeholder="Inserisci la tua password"
-          onChange={handleChange}
-        />
-
-        <button type="submit">Login</button>
-        {error && <p>{error}</p>}
-      </form>
-      <span> non sei registrato? </span>{" "}
-      {
-        //si usa il componente Link di react router dom quando dobbiamo effetuare solamente con il renderizzamento senza altre operazione collaterali
-      }
-      <Link to="/registrazione">registrati</Link>
+        {
+          //si usa il componente Link di react router dom quando dobbiamo effetuare solamente con il renderizzamento senza altre operazione collaterali
+        }
+      </div>
     </div>
   );
 }

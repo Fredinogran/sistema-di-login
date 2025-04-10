@@ -1,11 +1,19 @@
 import useSWR from "swr";
 import NavBar from "./navBar";
+import { useState } from "react";
 
 export default function Home(){
+  const [aggiunto, setAggiunto] = useState()
+  const [ordine, setOrdine] = useState([])
   const { error, data } = useSWR("https://fakestoreapi.com/products");
   console.log(data);
   if (!data && !error) return <p>Loading...</p>;
   if (error) return <p>Errore nel caricamento dei dati</p>;
+
+  function handleAggiungiProdotto(){
+    
+ setOrdine((prev)=> [...prev, aggiunto])
+  }
   return (
     <>
       <NavBar />
