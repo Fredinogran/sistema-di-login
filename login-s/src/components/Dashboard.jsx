@@ -1,4 +1,4 @@
-import { Navigate, useNavigate } from "react-router-dom";
+import { Link, Navigate, useNavigate } from "react-router-dom";
 import { useAuth } from "../context/authContext";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
@@ -90,9 +90,22 @@ export default function Dashboard() {
             </div>
           ))}
         </div>
-        <button className="logout" onClick={Handlelogout}>
-          Logout
-        </button>
+        <div className="flex justify-end gap-4">
+          <button
+            className=" block rounded-md bg-teal-600 px-5 py-2.5 text-sm font-medium text-white transition hover:bg-teal-700"
+            onClick={() => {
+              <Link to="/appuntamento" />;
+            }}
+          >
+            Prenota Appuntamento
+          </button>
+          <button
+            className=" block rounded-md bg-teal-600 px-5 py-2.5 text-sm font-medium text-white transition hover:bg-teal-700"
+            onClick={Handlelogout}
+          >
+            Logout
+          </button>
+        </div>
       </div>
       <Footer />
     </div>

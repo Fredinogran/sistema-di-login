@@ -1,4 +1,6 @@
+import { Link, useNavigate } from "react-router-dom";
 import { immobili } from "./Immobili";
+import { useAuth } from "../context/authContext";
 export default function Card({
   immagine,
   prezzo,
@@ -8,6 +10,15 @@ export default function Card({
   bagni,
   parcheggio,
 }) {
+  const { login } = useAuth();
+  const navigate = useNavigate();
+  function handleClick() {
+    if (login) {
+      navigate("/appuntamento");
+    } else {
+      navigate("/login");
+    }
+  }
   return (
     <>
       <a href="#" className="block rounded-lg p-4 shadow-xs shadow-indigo-100">
@@ -103,7 +114,14 @@ export default function Card({
             </div>
           </div>
         </div>
-        <button className="prenota">Prenota una Visita</button>
+        <div className="flex justify-center mt-5">
+          <button
+            className="block rounded-md bg-teal-600 px-5 py-2.5 text-sm font-medium text-white transition hover:bg-teal-700"
+            onClick={handleClick}
+          >
+            Prenota una Visita
+          </button>
+        </div>
       </a>
     </>
   );

@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useAuth } from "../context/authContext";
+import { useNavigate } from "react-router-dom";
 
 export default function Registrazione() {
   // Inizializziamo lo stato con un oggetto "user" che conterrà i dati inseriti dall’utente nel form
@@ -13,7 +14,8 @@ export default function Registrazione() {
   });
 
   // Prendiamo la funzione di registrazione dal nostro context (quello creato in AuthProvider)
-  const { registrazione } = useAuth();
+  const { registrazione, error } = useAuth();
+  const navigate = useNavigate();
 
   // Questa funzione si attiva ogni volta che l’utente scrive qualcosa in un input
   // Aggiorna dinamicamente lo stato dell’utente (basandosi sul nome del campo)
@@ -25,16 +27,23 @@ export default function Registrazione() {
   function handleSubmit(event) {
     event.preventDefault(); // Impedisce il comportamento di default del form (evita il refresh della pagina)
     registrazione(user); // Chiama la funzione 'registrazione' passando i dati dell'utente
+    if (!error) {
+      navigate("/login");
+    }
   }
 
   return (
     <>
-      <form onSubmit={handleSubmit}>
-        <div className="max-w-lg mx-auto  bg-white dark:bg-gray-800 rounded-lg shadow-md px-8 py-10 flex flex-col items-center">
+      <div className="min-h-screen bg-gray-100 flex items-center justify-center p-4">
+        <div className="max-w-md w-full bg-white rounded-xl shadow-lg p-8">
           <h1 className="text-xl font-bold text-center text-gray-700 dark:text-gray-200 mb-8">
             Registrazione
           </h1>
-          <form action="#" className="w-full flex flex-col gap-4">
+          <form
+            action="#"
+            className="w-full flex flex-col gap-4"
+            onSubmit={handleSubmit}
+          >
             <div className="flex items-start flex-col justify-start">
               <label
                 for="firstName"
@@ -117,23 +126,23 @@ export default function Registrazione() {
 
             <button
               type="submit"
-              className="bg-blue-500 hover:bg-blue-600 text-white font-medium py-2 px-4 rounded-md shadow-sm"
+              className="block rounded-md bg-teal-600 px-5 py-2.5 text-sm font-medium text-white transition hover:bg-teal-700"
             >
               Registrati
             </button>
+            {error && <p>{error}</p>}
           </form>
 
           <div className="mt-4 text-center">
             <span className="text-sm text-gray-500 dark:text-gray-300">
-              Already have an account?{" "}
+              Hai già un Account?{" "}
             </span>
-            <a href="#" className="text-blue-500 hover:text-blue-600">
+            <a href="/login" className="text-blue-500 hover:text-blue-600">
               Login
             </a>
           </div>
         </div>
-        ;
-      </form>
+      </div>
     </>
   );
 }
