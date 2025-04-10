@@ -43,23 +43,52 @@ export default function Dashboard() {
 
               <dd className="text-gray-700 sm:col-span-2">{user.tel}</dd>
             </div>
-
-            <div className="grid grid-cols-1 gap-1 py-3 sm:grid-cols-3 sm:gap-4">
-              <dt className="font-medium text-gray-900">
-                Indirizzo casa da visitare
-              </dt>
-
-              <dd className="text-gray-700 sm:col-span-2">{user.indirizzo}</dd>
-            </div>
-
-            <div className="grid grid-cols-1 gap-1 py-3 sm:grid-cols-3 sm:gap-4">
-              <dt className="font-medium text-gray-900">Data Appuntamento</dt>
-
-              <dd className="text-gray-700 sm:col-span-2">{user.data}</dd>
-            </div>
           </dl>
         </div>
         <br></br>
+        <div className="appuntamenti">
+          <h1 className="titolo">
+            <strong>I miei appuntamenti:</strong>
+          </h1>
+          {user.appuntamenti.map((x) => (
+            <div>
+              <a
+                href="#"
+                className="block rounded-md border border-gray-300 p-4 shadow-sm sm:p-6"
+              >
+                <div className="sm:flex sm:justify-between sm:gap-4 lg:gap-6">
+                  <div className="mt-4 sm:mt-0">
+                    <h3 className="text-lg font-medium text-pretty text-gray-900">
+                      {x.via_citta}
+                    </h3>
+
+                    <p className="mt-1 text-sm text-gray-700">
+                      Visitatore: {x.nome_appuntamento} {x.cognome_appuntamento}
+                    </p>
+                  </div>
+                </div>
+
+                <dl className="mt-6 flex gap-4 lg:gap-6">
+                  <div>
+                    <dt className="text-sm font-medium text-gray-700">
+                      Data visita:
+                    </dt>
+
+                    <dd className="text-xs text-gray-700">{x.data}</dd>
+                  </div>
+
+                  <div>
+                    <dt className="text-sm font-medium text-gray-700">
+                      Recapito telefonico :
+                    </dt>
+
+                    <dd className="text-xs text-gray-700">{x.tel}</dd>
+                  </div>
+                </dl>
+              </a>
+            </div>
+          ))}
+        </div>
         <button className="logout" onClick={Handlelogout}>
           Logout
         </button>

@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { useAuth } from "../context/authContext";
+import { Navigate, useNavigate } from "react-router-dom";
 export default function Appuntamento() {
+  const navigate = useNavigate();
   const { appuntamentos } = useAuth();
   const [appuntamento, setAppuntamento] = useState({
     nome_appuntamento: "",
@@ -67,7 +69,9 @@ export default function Appuntamento() {
         <label>Seleziona Giorno</label>
         <input type="date" name="data" onChange={handleChange} />
 
-        <button type="submit">Prenota Appuntamento</button>
+        <button onClick={() => navigate("/dashboard")}>
+          Prenota Appuntamento
+        </button>
       </form>
     </>
   );
