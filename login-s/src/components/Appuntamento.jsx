@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useAuth } from "../context/authContext";
 export default function Appuntamento() {
-  const { user, appuntamentos } = useAuth();
+  const { appuntamentos } = useAuth();
   const [appuntamento, setAppuntamento] = useState({
     nome_appuntamento: "",
     cognome_appuntamento: "",
@@ -19,10 +19,7 @@ export default function Appuntamento() {
   }
   function handleSubmit(event) {
     event.preventDefault();
-    console.log(appuntamento);
-    console.log(user);
     appuntamentos(appuntamento);
-    console.log(user);
   }
   return (
     <>

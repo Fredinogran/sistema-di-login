@@ -8,6 +8,7 @@ export default function Registrazione() {
     cognome: "",
     email: "",
     password: "",
+    appuntamenti: [],
   });
 
   // Prendiamo la funzione di registrazione dal nostro context (quello creato in AuthProvider)
