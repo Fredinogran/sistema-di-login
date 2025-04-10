@@ -99,7 +99,7 @@ export default function Card({
                 <p className="text-gray-500">Bedroom</p>
 
                 <p className="font-medium">{camere_da_letto}</p>
-                <button>Prenota un Appuntamento</button>
+                <button className="prenota">Prenota un Appuntamento</button>
               </div>
             </div>
           </div>
