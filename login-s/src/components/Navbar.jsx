@@ -13,7 +13,7 @@ export default function Navbar() {
     <>
       <header className="bg-white">
         <div className="mx-auto flex h-16 max-w-screen-xl items-center gap-8 px-4 sm:px-6 lg:px-8">
-          <a className="block text-teal-600" href="#">
+          <a className="block text-teal-600" href="/home">
             <span className="sr-only">Home</span>
             <svg
               className="h-8"
@@ -86,29 +86,19 @@ export default function Navbar() {
               <>
                 <div className="flex flex-1 items-center justify-end md:justify-end gap-5">
                   <div className="sm:flex sm:gap-3">
-                    <img
-                      className="logo"
-                      src="src/assets/user-circle-svgrepo-com.png"
-                      alt=""
-                    />
-                    <p className="flex items-center">
-                      <strong>
-                        {" "}
-                        {user.nome} {user.cognome}
-                      </strong>
-                    </p>
-                    <a
-                      className=" flex block rounded-md bg-teal-600 px-5 py-2.5 text-sm font-medium text-white transition hover:bg-teal-700 "
-                      href="http://localhost:5173/home"
-                    >
-                      Home
+                    <a href="/dashboard" className="flex ">
+                      <img
+                        className="logo"
+                        src="src/assets/user-circle-svgrepo-com.png"
+                        alt=""
+                      />
+                      <p className="flex items-center">
+                        <strong>
+                          {" "}
+                          {user.nome} {user.cognome}
+                        </strong>
+                      </p>
                     </a>
-                    <button
-                      className="block rounded-md bg-teal-600 px-5 py-2.5 text-sm font-medium text-white transition hover:bg-teal-700"
-                      onClick={handleDashboard}
-                    >
-                      Dashboard
-                    </button>
                     <button
                       className="block rounded-md bg-teal-600 px-5 py-2.5 text-sm font-medium text-white transition hover:bg-teal-700"
                       onClick={handleLogout}

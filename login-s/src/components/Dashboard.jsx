@@ -14,6 +14,11 @@ export default function Dashboard() {
     navigate("/appuntamento");
   }
 
+  function handleDelete(index) {
+    user.appuntamenti.splice(index, 1);
+    localStorage.setItem("user", JSON.stringify(user));
+  }
+
   return (
     <div>
       <Navbar />
@@ -51,8 +56,8 @@ export default function Dashboard() {
           <h1 className="titolo">
             <strong>I miei appuntamenti:</strong>
           </h1>
-          {user.appuntamenti.map((x) => (
-            <div className="mt-6">
+          {user.appuntamenti.map((x, index) => (
+            <div key={index} className="mt-6">
               <a
                 href="#"
                 className="block rounded-md border border-gray-300 p-4 shadow-sm sm:p-6"
@@ -69,7 +74,7 @@ export default function Dashboard() {
                   </div>
                 </div>
 
-                <dl className="mt-6 flex gap-4 lg:gap-6">
+                <dl className="mt-6 flex  gap-4 lg:gap-6 ">
                   <div>
                     <dt className="text-sm font-medium text-gray-700">
                       Data visita:
@@ -77,15 +82,21 @@ export default function Dashboard() {
 
                     <dd className="text-xs text-gray-700">{x.data}</dd>
                   </div>
-
-                  <div>
-                    <dt className="text-sm font-medium text-gray-700">
-                      Recapito telefonico :
-                    </dt>
-
-                    <dd className="text-xs text-gray-700">{x.tel}</dd>
-                  </div>
+                  <dt className="text-sm font-medium text-gray-700">
+                    Recapito telefonico :
+                    <dd className="flex text-xs text-gray-700">{x.tel}</dd>
+                  </dt>
                 </dl>
+                <div className="mt-6 flex gap-4 lg:gap-6 justify-end">
+                  <div className="">
+                    <button
+                      className=" mt-3 block rounded-md  bg-red-600 px-5 py-2.5 text-sm font-medium text-white transition hover:bg-red-700 bg-red"
+                      onClick={() => handleDelete(index)}
+                    >
+                      Cancella Appuntamento
+                    </button>
+                  </div>
+                </div>
               </a>
             </div>
           ))}

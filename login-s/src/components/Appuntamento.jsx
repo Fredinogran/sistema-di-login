@@ -4,7 +4,7 @@ import { Navigate, useNavigate } from "react-router-dom";
 import Navbar from "./Navbar";
 export default function Appuntamento() {
   const navigate = useNavigate();
-  const { appuntamentos } = useAuth();
+  const { appuntamentos, user } = useAuth();
   const [appuntamento, setAppuntamento] = useState({
     nome_appuntamento: "",
     cognome_appuntamento: "",
@@ -44,7 +44,7 @@ export default function Appuntamento() {
                         <input
                           type="text"
                           name="nome_appuntamento"
-                          placeholder="Inserisci il tuo nome"
+                          placeholder={user.nome}
                           onChange={handleChange}
                           className="h-10 border mt-1 rounded px-4 w-full bg-gray-50"
                         />
@@ -55,7 +55,7 @@ export default function Appuntamento() {
                         <input
                           type="text"
                           name="cognome_appuntamento"
-                          placeholder="Inserisci il tuo cognome"
+                          placeholder={user.cognome}
                           onChange={handleChange}
                           className="h-10 border mt-1 rounded px-4 w-full bg-gray-50"
                         />
@@ -66,7 +66,7 @@ export default function Appuntamento() {
                         <input
                           type="email"
                           name="email_appuntamento"
-                          placeholder="Inserisci la tua email"
+                          placeholder={user.email}
                           onChange={handleChange}
                           className="h-10 border mt-1 rounded px-4 w-full bg-gray-50"
                         />
@@ -77,7 +77,7 @@ export default function Appuntamento() {
                         <input
                           type="tel"
                           name="tel"
-                          placeholder="Inserire numero telefonico "
+                          placeholder={user.tel}
                           onChange={handleChange}
                           className="h-10 border mt-1 rounded px-4 w-full bg-gray-50"
                         />
