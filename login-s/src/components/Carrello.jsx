@@ -121,22 +121,22 @@ export default function Carrello() {
                 </div>
                   <div className="flex justify-between">
                       <dt>Subtotal</dt>
-                      <dd>£{subtotal.toFixed(2)}</dd>
+                      <dd>${subtotal.toFixed(2)}</dd>
                     </div>
 
                     <div className="flex justify-between">
                       <dt>VAT (22%)</dt>
-                      <dd>£{vat.toFixed(2)}</dd>
+                      <dd>${vat.toFixed(2)}</dd>
                     </div>
 
                     <div className="flex justify-between">
                       <dt>Discount(-10%)</dt>
-                      <dd>-£{discount.toFixed(2)}</dd>
+                      <dd>-${discount.toFixed(2)}</dd>
                     </div>
 
                     <div className="flex justify-between !text-base font-medium">
                       <dt>Total</dt>
-                      <dd>£{total.toFixed(2)}</dd>
+                      <dd>${total.toFixed(2)}</dd>
                     </div>
                   </dl>
                   <div className="flex justify-end">
