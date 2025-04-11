@@ -7,6 +7,7 @@ import Registrazione from "./components/Registrazione";
 import AuthProvider from "./context/authContext";
 import Carrello from "./components/Carrello";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import CheckOut from "./components/checkOut";
 
 function App() {
   return (

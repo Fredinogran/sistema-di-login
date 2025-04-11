@@ -1,8 +1,13 @@
 import { useState, useEffect } from "react";
 import NavBar from "./navBar"; 
+import { Link } from "react-router-dom";
+import CheckOut from "./checkOut";
+import { useAuth } from "../context/authContext";
+
 
 export default function Carrello() {
   const [prodotti, setProdotti] = useState([]);
+  const {user} = useAuth()
 
   useEffect(() => {
     const savedProdotti = JSON.parse(localStorage.getItem("prodotti") || "[]");
@@ -156,15 +161,16 @@ export default function Carrello() {
                 </span>
               </div>
                   <div className="flex justify-end">
-                    <a
-                      href="#"
+                    <Link
+                      to={"/checkout"}
                       className="rounded-md bg-sky-300 px-5 py-2.5 text-sm font-medium text-white shadow-sm hover:bg-blue-500">
                       Checkout
-                    </a>
+                    </Link>
                   </div>
                 </div>
               </div>
             </div>
+              { user ? <CheckOut></CheckOut> : <p>Registrati</p>}  
           </div>
         </div>
       </section>
